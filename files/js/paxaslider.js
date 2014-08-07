@@ -1,7 +1,9 @@
 (function( $ ){
-
+  var pointerSliderPaxa = 0;
   $.fn.paxaSlider = function(options){
-    var self = this;
+    pointerSliderPaxa++;
+    var that = this;
+    this.parentId = 'uniq_id_px'+pointerSliderPaxa;
     this.son = (options && options.son) ? $(options.son) : this.children('*');
     this.ElementsLength= this.son.length;
     this.bullet='<div class="bullet_slider_px"></div>';
@@ -11,43 +13,44 @@
     this.intervalBanner = null;
     this.position = (options && options.random) ? Math.random() * this.ElementsLength | 0 : 0;
 
+
     this.bulletInsert = function(){
-      self.append(this.bulletHolder);
+      that.append(this.bulletHolder);
       for (var i = 0; i < this.ElementsLength; i++) {
-        self.children('.container_bullets_px').append(this.bullet);
+        that.children('.container_bullets_px').append(this.bullet);
       }
     };
     
     this.classModifier = function(s){
-      this.bulletEl= $('.bullet_slider_px');
+      this.bulletEl= $('#'+that.parentId+' .bullet_slider_px');
       this.bulletEl.removeClass('active_bullet');
       this.bulletEl.eq(s).addClass('active_bullet');
-      this.addClass('slider_wrapper_px');
-      self.son.addClass('son_slider_px');
-      self.son.not(self.son.eq(s)).fadeOut('fast');
-      self.son.eq(s).fadeIn('fast');
+      that.son.not(that.son.eq(s)).fadeOut('fast');
+      that.son.eq(s).fadeIn('fast');
     };
 
     this.bannerCarousel = function(){
-      if(self.position==(self.ElementsLength-1)){
-        self.position=0;
-        self.classModifier(self.position);
+      if(that.position==(that.ElementsLength-1)){
+        that.position=0;
+        that.classModifier(that.position);
       }else{
-        self.position++;
-        self.classModifier(self.position);
+        that.position++;
+        that.classModifier(that.position);
       }
     };
 
     this.init = function(){
-      this.bulletInsert();
-      this.classModifier(self.position);
-      this.intervalBanner = setInterval(this.bannerCarousel, this.seconds);
+      that.bulletInsert();
+      that.addClass('slider_wrapper_px').attr('id',that.parentId);
+      that.son.addClass('son_slider_px');
+      that.classModifier(that.position);
+      that.intervalBanner = setInterval(that.bannerCarousel, that.seconds);
 
-      $(document).on('click','.bullet_slider_px', function() {
-        self.position = $(this).index('.bullet_slider_px');
-        self.classModifier(self.position);
-        clearInterval(self.intervalBanner);
-        self.intervalBanner = setInterval(self.bannerCarousel, self.seconds);
+      $(document).on('click', '#'+that.parentId+' .bullet_slider_px', function() {
+        that.position = $(this).index('#'+that.parentId+' .bullet_slider_px');
+        that.classModifier(that.position);
+        clearInterval(that.intervalBanner);
+        that.intervalBanner = setInterval(that.bannerCarousel, that.seconds);
       });
     
     };
