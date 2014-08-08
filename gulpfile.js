@@ -31,7 +31,7 @@ gulp.task('scripts', function() {
 //minifica e compila o sass
 gulp.task('sass', function() {
     return gulp.src(['files/sass/paxaslider.sass'])
-      .pipe(sass({sourcemap: true, sourcemapPath: '../sass'}))
+      .pipe(sass())
       .on('error', function (err) { console.error('Error :'+err.message); })
       .pipe(minifyCSS({
         keepSpecialComments: 0
