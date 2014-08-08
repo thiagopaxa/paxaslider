@@ -22,7 +22,7 @@
     };
     
     this.classModifier = function(s){
-      this.bulletEl= $('#'+that.parentId+' .bullet_slider_px');
+      this.bulletEl= $('.'+that.parentId+' .bullet_slider_px');
       this.bulletEl.removeClass('active_bullet');
       this.bulletEl.eq(s).addClass('active_bullet');
       that.son.not(that.son.eq(s)).fadeOut('fast');
@@ -41,13 +41,13 @@
 
     this.init = function(){
       that.bulletInsert();
-      that.addClass('slider_wrapper_px').attr('id',that.parentId);
+      that.addClass('slider_wrapper_px').addClass(that.parentId);
       that.son.addClass('son_slider_px');
       that.classModifier(that.position);
       that.intervalBanner = setInterval(that.bannerCarousel, that.seconds);
 
-      $(document).on('click', '#'+that.parentId+' .bullet_slider_px', function() {
-        that.position = $(this).index('#'+that.parentId+' .bullet_slider_px');
+      $(document).on('click', '.'+that.parentId+' .bullet_slider_px', function() {
+        that.position = $(this).index('.'+that.parentId+' .bullet_slider_px');
         that.classModifier(that.position);
         clearInterval(that.intervalBanner);
         that.intervalBanner = setInterval(that.bannerCarousel, that.seconds);

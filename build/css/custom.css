@@ -1,3 +1,7 @@
+body{
+  background-color: #ddd;
+}
+
 .banner, .banner2{ 
   width: 940px;
   height: 300px;
