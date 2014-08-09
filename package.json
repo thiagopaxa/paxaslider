@@ -1,0 +1,29 @@
+{
+  "name": "paxaSlider",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-changed": "^0.4.1",
+    "gulp-concat": "^2.3.4",
+    "gulp-imagemin": "^0.6.2",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-sass": "^0.7.2",
+    "gulp-uglify": "^0.3.1",
+    "gulp": "^3.8.7"
+  },
+  "devDependencies": {
+    "gulp-ruby-sass": "^0.7.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "slider",
+    "easy",
+    "slider",
+    "paxaslider"
+  ],
+  "author": "Thiago Paixao",
+  "license": "MIT"
+}

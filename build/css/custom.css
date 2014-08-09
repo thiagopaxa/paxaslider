@@ -1,0 +1,21 @@
+body{
+  background-color: #ddd;
+}
+
+.banner{
+  width: 940px;
+  height: 300px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+/* Modifying the default size of the bullets container */
+.banner .container_bullets_px{
+  top: 270px
+}
+
+.banner2{
+  width: 1080px;
+  height: 450px;
+  padding-top: 36px; 
+  margin: 0 auto;
+}
