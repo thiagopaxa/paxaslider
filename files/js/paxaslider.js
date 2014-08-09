@@ -36,6 +36,7 @@
     this.seconds= (options && options.seconds)? (options.seconds*1000) : 5000;
     // The position can be random or not, if not the first element will always appear on load
     this.position = (options && options.random) ? Math.random() * this.ElementsLength | 0 : 0;
+    
     //The method that gives the element the bullets
     this.bulletInsert = function(shape){
       that.append(this.bulletHolder[shape]);
@@ -77,7 +78,7 @@
         that.bulletInsert('balls');
       }else if((options && options.bullet == 'labels')){
         that.bulletInsert('labels');
-      }else{console.log('NOT TODAY')}
+      }
     };
 
     //the method that initializes everything

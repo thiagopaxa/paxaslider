@@ -30,9 +30,11 @@ gulp.task('scripts', function() {
 
 //minifica e compila o sass
 gulp.task('sass', function() {
-    return gulp.src(['files/sass/paxaslider.sass'])
+    gulp.src(['files/sass/paxaslider.sass'])
       .pipe(sass())
       .on('error', function (err) { console.error('Error :'+err.message); })
+      .pipe(gulp.dest('build/css/'))
+      .pipe(concat('paxaslider.min.css'))
       .pipe(minifyCSS({
         keepSpecialComments: 0
       }))
