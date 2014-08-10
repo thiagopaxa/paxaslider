@@ -1,7 +1,6 @@
 (function( $ ){
   
   // pointerSliderPaxa creates an unique pointer for each slider, so you can use it more
-  // pointerSliderPaxa creates an unique pointer for each slider, so you can use it more
 
   var pointerSliderPaxa = 0;
   $.fn.paxaSlider = function(options){

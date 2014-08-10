@@ -14,22 +14,60 @@ Then you'll have to link it to your HTML page (obviously).
 
 The last step is defining the wrapper element of your slider and calling the method `paxaSlider()` in your main javascript file.
 
-Simple Example:
+### Simple Example:
 
-```
+```javascript
   $('.banner').paxaSlider();
 ```
 
-Complex Example:
+```html
+  <div class="banner">
+    <img src="banner-random.jpg" alt="Banner">
+    <img src="banner-random1.jpg" alt="Banner">
+    <img src="banner-random2.jpg" alt="Banner">
+    <img src="banner-random3.jpg" alt="Banner">
+  </div>
+```
 
-```
-  $('.banner').paxaSlider({
-    son : '.childElement',
-    seconds : 4,
-    random: true
-  });
-```
 
 The slider will create automatic bullets and will be ready to use.
 
+#### The Defaults:
+The default changing time is 5 seconds,
+the default son will be any element in the first degree of hierarchy, like a more sophisticated `$( ".banner > *)`,
+the default marker is the ball shaped bullets,
+and by default the randomly loaded banner is false.
+
+
+#### A more Complex Example:
+
+```javascript
+  $('.banner').paxaSlider({
+    son : '.childElement',
+    seconds : 4,
+    random: true,
+    bullets: labels
+  });
+```
+
+As you can see, you can add labels just like the click-ables bullets. but there's a tiny change in the html.
+
+below is the code of what your HTML markup would look like:
+
+```html
+  <div class="banner">
+    <!-- 
+      You can see the data-label here, the value of this attribute 
+      will be passed down to the "label-bullets"
+    -->
+    <img class="childElement" data-label="Label Title" src="banner-random.jpg" alt="Banner">
+    <img class="childElement" data-label="Lorem Ipsum" src="banner-random1.jpg" alt="Banner">
+    <img class="childElement" data-label="Dolor Sit" src="banner-random2.jpg" alt="Banner">
+    <img class="childElement" data-label="Dolor Sit" src="banner-random3.jpg" alt="Banner">
+  </div>
+```
+
+
 Remembering that the style of your wrapper element is yours to define.
+
+And the other styles can be redefined for a better match with you interface.
