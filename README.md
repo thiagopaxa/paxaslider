@@ -14,7 +14,7 @@ Then you'll have to link it to your HTML page (obviously).
 
 The last step is defining the wrapper element of your slider and calling the method `paxaSlider()` in your main javascript file.
 
-### Simple Example:
+#### Simple Example:
 
 ```javascript
   $('.banner').paxaSlider();
