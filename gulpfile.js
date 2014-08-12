@@ -2,7 +2,7 @@
 var gulp = require('gulp'),
     changed = require('gulp-changed'),
     imagemin = require('gulp-imagemin'),
-    uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglifyjs'),
     sass = require('gulp-ruby-sass'),
     minifyCSS = require('gulp-minify-css'),
     concat = require('gulp-concat');
@@ -24,7 +24,7 @@ gulp.task('imagemin', function() {
 gulp.task('scripts', function() {
     return gulp.src(['files/js/paxaslider.js'])
       .pipe(concat('paxaslider.min.js'))
-      .pipe(uglify())
+      .pipe(uglify({outSourceMap: true}))
       .pipe(gulp.dest('build/js/'));
 });
 

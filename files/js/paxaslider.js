@@ -15,22 +15,23 @@
     this.ElementsLength= this.son.length;
     
     // Bullet and bullets Wrapper Ellements
-    this.bulletElement ={
-      balls: 'bullet_slider_px',
-      labels: 'labels_bullet_slider_px'
-    };
     this.bullet = {
-      balls: '<div class="'+this.bulletElement.balls+'"></div>',
-      labels: '<div class="'+this.bulletElement.labels+'"></div>'
+      balls : {
+        class : 'bullet_slider_px',
+        element : '<div class="bullet_slider_px"></div>',
+        wrapperClass : 'container_bullets_px',
+        wrapperElement : '<div class="container_bullets_px"></div>'
+      },
+      tabs: {
+        class :  'labels_bullet_slider_px',
+        element :  '<div class="labels_bullet_slider_px"></div>',
+        wrapperClass :  'container_labels_px',
+        wrapperElement :  '<div class="container_labels_px"></div>'
+      },
+      idElement : null,
+      selector : null
     };
-    this.bulletHolderSelector = {
-      balls: 'container_bullets_px',
-      labels: 'container_labels_px'
-    };
-    this.bulletHolder = {
-      balls: '<div class='+this.bulletHolderSelector.balls+'></div>',
-      labels: '<div class='+this.bulletHolderSelector.labels+'></div>'
-    };
+
     // the Default time for change is 5 seconds
     this.seconds= (options && options.seconds)? (options.seconds*1000) : 5000;
     // The position can be random or not, if not the first element will always appear on load
@@ -38,24 +39,22 @@
     
     //The method that gives the element the bullets
     this.bulletInsert = function(shape){
-      that.append(this.bulletHolder[shape]);
+      that.append(this.bullet[shape].wrapperElement);
       for (var i = 0; i < this.ElementsLength; i++) {
-        $('.'+that.parentId+' .'+that.bulletHolderSelector[shape]).append(this.bullet[shape]);
+        $('.'+that.parentId+' .'+that.bullet[shape].wrapperClass).append(this.bullet[shape].element);
       }
-      if (shape == 'labels'){
-        // Here is where the labels will be inputed
+      if (shape == 'tabs'){// Here is where the labels will be inputed
         that.son.each(function(index,el) {
           $('.'+that.parentId+' .labels_bullet_slider_px').eq(index).html($(this).attr('data-label'))
         });
       };
-      this.bulletEl = '.'+this.parentId+' .'+this.bulletElement[shape];
-      this.bulletSelector = $('.'+this.parentId+' .'+this.bulletElement[shape]);
-
+      this.bullet.idElement = '.'+this.parentId+' .'+this.bullet[shape].class;
+      this.bullet.selector = $(this.bullet.idElement);
     };
     //The method that modify the classes
     this.classModifier = function(s){
-      this.bulletSelector.removeClass('active_bullet');
-      this.bulletSelector.eq(s).addClass('active_bullet');
+      this.bullet.selector.removeClass('active_bullet');
+      this.bullet.selector.eq(s).addClass('active_bullet');
       this.son.not(this.son.eq(s)).fadeOut('fast');
       this.son.eq(s).fadeIn('fast');
     };
@@ -75,8 +74,8 @@
     this.bulletChooser = function(){
       if ((options && options.bullet == 'balls') || (!options) || (options && typeof options.bullet == 'undefined')){
         that.bulletInsert('balls');
-      }else if((options && options.bullet == 'labels')){
-        that.bulletInsert('labels');
+      }else if((options && options.bullet == 'tabs')){
+        that.bulletInsert('tabs');
       }
     };
 
@@ -87,8 +86,8 @@
       that.classModifier(that.position);
       that.intervalBanner = setInterval(that.positionChanger, that.seconds);
 
-      $(document).on('click', that.bulletEl, function() {
-        that.position = $(this).index(that.bulletEl);
+      $(document).on('click', that.bullet.idElement, function() {
+        that.position = $(this).index(that.bullet.idElement);
         that.classModifier(that.position);
         clearInterval(that.intervalBanner);
         that.intervalBanner = setInterval(that.positionChanger, that.seconds);

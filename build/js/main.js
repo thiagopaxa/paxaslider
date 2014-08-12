@@ -3,7 +3,7 @@ $(function(){
   $('.banner').paxaSlider({
     seconds:3,
     random:true,
-    bullet: 'labels'
+    bullet: 'tabs'
   });
 
   $('.banner2').paxaSlider({

@@ -46,7 +46,7 @@ and by default the randomly loaded banner is false.
     son : '.childElement',
     seconds : 4,
     random: true,
-    bullets: labels
+    bullets: 'tabs'
   });
 ```
 
@@ -57,13 +57,13 @@ below is the code of what your HTML markup would look like:
 ```html
   <div class="banner">
     <!-- 
-      You can see the data-label here, the value of this attribute 
-      will be passed down to the "label-bullets"
+      You can see the data-tabTitle here, the value of this attribute 
+      will be passed down to the "tab-bullets"
     -->
-    <img class="childElement" data-label="Label Title" src="banner-random.jpg" alt="Banner">
-    <img class="childElement" data-label="Lorem Ipsum" src="banner-random1.jpg" alt="Banner">
-    <img class="childElement" data-label="Dolor Sit" src="banner-random2.jpg" alt="Banner">
-    <img class="childElement" data-label="Dolor Sit" src="banner-random3.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Label Title" src="banner-random.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Lorem Ipsum" src="banner-random1.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Dolor Sit" src="banner-random2.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Dolor Sit" src="banner-random3.jpg" alt="Banner">
   </div>
 ```
 
