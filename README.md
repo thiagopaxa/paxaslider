@@ -50,7 +50,7 @@ and by default the randomly loaded banner is false.
   });
 ```
 
-As you can see, you can add labels just like the click-ables bullets. but there's a tiny change in the html.
+As you can see, you can add tabs as labels just like the click-ables bullets. but there's a tiny change in the html.
 
 below is the code of what your HTML markup would look like:
 
@@ -60,10 +60,10 @@ below is the code of what your HTML markup would look like:
       You can see the data-tabTitle here, the value of this attribute 
       will be passed down to the "tab-bullets"
     -->
-    <img class="childElement" data-tabTitle="Label Title" src="banner-random.jpg" alt="Banner">
-    <img class="childElement" data-tabTitle="Lorem Ipsum" src="banner-random1.jpg" alt="Banner">
-    <img class="childElement" data-tabTitle="Dolor Sit" src="banner-random2.jpg" alt="Banner">
-    <img class="childElement" data-tabTitle="Dolor Sit" src="banner-random3.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Apenas um Exemplo" src="banner-random.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Apenas outro Exemplo" src="banner-random1.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Only an Example" src="banner-random2.jpg" alt="Banner">
+    <img class="childElement" data-tabTitle="Another One" src="banner-random3.jpg" alt="Banner">
   </div>
 ```
 

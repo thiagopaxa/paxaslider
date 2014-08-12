@@ -43,9 +43,9 @@
       for (var i = 0; i < this.ElementsLength; i++) {
         $('.'+that.parentId+' .'+that.bullet[shape].wrapperClass).append(this.bullet[shape].element);
       }
-      if (shape == 'tabs'){// Here is where the labels will be inputed
+      if (shape == 'tabs'){// Here is where the tabs will be inputed
         that.son.each(function(index,el) {
-          $('.'+that.parentId+' .labels_bullet_slider_px').eq(index).html($(this).attr('data-label'))
+          $('.'+that.parentId+' .labels_bullet_slider_px').eq(index).html($(this).attr('data-tabTitle'))
         });
       };
       this.bullet.idElement = '.'+this.parentId+' .'+this.bullet[shape].class;

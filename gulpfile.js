@@ -57,4 +57,4 @@ gulp.task('default', ['imagemin', 'scripts','sass'], function() {
     });
 
 });
-//npm install gulp gulp-changed gulp-imagemin gulp-uglify gulp-ruby-sass gulp-minify-css gulp-concat
+//npm install gulp gulp-changed gulp-imagemin gulp-uglifyjs gulp-ruby-sass gulp-minify-css gulp-concat
