@@ -39,6 +39,10 @@ gulp.task('sass', function() {
         keepSpecialComments: 0
       }))
       .pipe(gulp.dest('build/css/'));
+    gulp.src(['files/sass/custom.sass'])
+      .pipe(sass())
+      .on('error', function (err) { console.error('Error :'+err.message); })
+      .pipe(gulp.dest('build/css/'));
 });
 
 gulp.task('default', ['imagemin', 'scripts','sass'], function() {

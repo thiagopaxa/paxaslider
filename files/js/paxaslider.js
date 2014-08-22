@@ -10,11 +10,11 @@
     this.parentId = 'uniq_id_px'+pointerSliderPaxa;
     this.addClass('slider_wrapper_px').addClass(that.parentId);
 
-    //If no son is defined, the program will search for all the childs of the wrapper element
+    //If no son is defined, the program will search for all the children of the wrapper element
     this.son = (options && options.son) ? $(options.son) : $('.'+that.parentId+'> *');
     this.ElementsLength= this.son.length;
     
-    // Bullet and bullets Wrapper Ellements
+    // Bullet and bullets Wrapper Elements
     this.bullet = {
       balls : {
         class : 'bullet_slider_px',
@@ -61,16 +61,18 @@
 
     //The method that changes the positions of the banners and bullets
     this.positionChanger = function(){
-      if(that.position==(that.ElementsLength-1)){
-        that.position=0;
-        that.classModifier(that.position);
+      
+      if (options && options.contrary) {   
+        that.position = (that.position == 0) ? that.ElementsLength-1 : that.position - 1 ;
       }else{
-        that.position++;
-        that.classModifier(that.position);
+        that.position = (that.position == that.ElementsLength-1) ? 0 : that.position + 1 ;
       }
+      
+      that.classModifier(that.position);
+    
     };
 
-    //The method that decides wich bullet will you choose
+    //The method that provides the bullets you've chosen
     this.bulletChooser = function(){
       if ((options && options.bullet == 'balls') || (!options) || (options && typeof options.bullet == 'undefined')){
         that.bulletInsert('balls');
@@ -78,19 +80,40 @@
         that.bulletInsert('tabs');
       }
     };
-
+    this.navigationControl = function(){
+      if (options && options.navigation){
+        var nav = options.navigation;
+        $(document).on('click', nav.left , function(event) {
+          that.navigationChanger('backward');
+        });
+        $(document).on('click', nav.right , function(event) {
+          that.navigationChanger('forward');
+        });
+        // that.classModifier(that.position);
+      };
+    };
+    this.navigationChanger = function(step){
+      if (step == 'backward') {
+        that.position = (that.position == 0) ? that.ElementsLength-1 : that.position - 1 ;
+      }else if(step == 'forward'){
+        that.position = (that.position == that.ElementsLength-1) ? 0 : that.position + 1 ;
+      }
+      that.classModifier(that.position);
+      clearInterval(that.intervalBanner);
+      that.intervalBanner = setInterval(that.positionChanger, that.seconds);
+    
+    };
     //the method that initializes everything
     this.init = function(){
       that.bulletChooser();
       that.son.addClass('son_slider_px');
       that.classModifier(that.position);
       that.intervalBanner = setInterval(that.positionChanger, that.seconds);
+      that.navigationControl();
 
       $(document).on('click', that.bullet.idElement, function() {
         that.position = $(this).index(that.bullet.idElement);
-        that.classModifier(that.position);
-        clearInterval(that.intervalBanner);
-        that.intervalBanner = setInterval(that.positionChanger, that.seconds);
+        that.navigationChanger();
       });
     
     };

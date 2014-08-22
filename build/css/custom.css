@@ -1,21 +1,40 @@
-body{
-  background-color: #ddd;
-}
+body {
+  background-color: #dddddd; }
 
-.banner{
+.banner {
   width: 940px;
   height: 300px;
   margin: 0 auto;
-  padding-bottom: 20px;
-}
-/* Modifying the default size of the bullets container */
-.banner .container_bullets_px{
-  top: 270px
-}
+  padding-bottom: 20px; }
 
-.banner2{
+/* Modifying the default size of the bullets container */
+.banner .container_bullets_px {
+  top: 270px; }
+
+.banner2 {
   width: 1080px;
   height: 450px;
-  padding-top: 36px; 
-  margin: 0 auto;
-}
+  padding-top: 36px;
+  margin: 0 auto; }
+
+nav.arrow {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  z-index: 30;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent; }
+  nav.arrow.leftArrow {
+    left: 20px;
+    border-right: 25px solid #3456b1; }
+    nav.arrow.leftArrow:hover {
+      border-right: 25px solid #a7a3b1; }
+  nav.arrow.rightArrow {
+    border-left: 25px solid #3456b1;
+    right: 20px; }
+    nav.arrow.rightArrow:hover {
+      border-left: 25px solid #a7a3b1; }
